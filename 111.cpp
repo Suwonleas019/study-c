@@ -1,6 +1,8 @@
-﻿//  LESSON 1.화면에 문자를 출력하는 코드
+﻿
+//  LESSON 1.화면에 문자를 출력하는 코드
 
 #include <iostream>
+
 using namespace std;
 /*
 using namespace std;
@@ -962,7 +964,7 @@ int main()
 	return 0;
 }*/
 //LESSON 7 함수
-
+/*
 //buy 함수의 정의
 void buy()
 {
@@ -974,4 +976,1363 @@ int main()
 {
 	buy();
 	return 0;
+}*/
+// 반복해서 함수 호출하기
+/*
+//buy 함수의 정의
+void buy()
+{
+	cout << "차를 구입했습니다.\n";
 }
+//buy 함수의 이용
+int main()
+{
+	buy();
+	cout << "차량을 또 1대 구입합니다.\n";
+	
+	buy();
+	return 0;
+}*/
+
+// LESSON 7.3 인수------------------------------------------------
+/*
+// buy 함수의 정의
+void buy(int x)
+{
+	cout << x << "만원 짜리 차량을 구입했습니다.\n";
+}
+
+//buy 함수의 호출
+int main()
+{
+	buy(20);
+	buy(50);
+
+	return 0;
+}*/
+/*
+void buy(int x) {
+	cout << x << "만원 짜리 차량을 구입했습니다.\n";
+}
+int main()
+{
+	int num;
+	cout << "첫 번째 차량의 가격은 얼마입니까?\n";
+
+	cin >> num;
+
+	buy(num);
+
+	cout << "두 번째 차량의 가격은 얼마입니까?\n";
+	
+	cin >> num;
+
+	buy(num);
+	return 0;
+}*/
+// 인수를 넘겨야 하는 함수 사용 ----------------------------
+/*
+void buy (int x , int y)
+{
+	cout << "산 차량의 가격은" << x << "와" << y << "입니다.\n";
+}
+
+int main()
+{
+	int num1;
+	int num2;
+	cout << "첫 번째 차량의 가격은 얼마입니까\n";
+	cin >> num1;
+	cout << "두 번째 차량의 가격은 얼마입니까?\n";
+	cin >> num2;
+
+	buy(num1, num2);
+	return 0;
+}*/
+//LESSON 7.4 리턴 값------------------------------------------------
+/*
+int buy(int x, int y)
+{
+	int z;
+
+	cout << x << "만원짜리" << y << "만원짜리 차량을 구입했습니다.\n";
+
+	z = x + y;
+	return z;
+}
+int main()
+{
+	int num1, num2, sum;
+	cout << "첫 번째 차량의 가격은 얼마입니까?\n";
+	cin >> num1;
+	
+	cout << "두 번째 차량의 가격은 얼마입니까?\n";
+	cin >> num2;
+
+	sum = buy(num1, num2);
+	cout << "차량의 총 가격은" << sum << "만원 입니다.\n";
+	return 0;
+}*/
+
+// LESSON 7.5 함수의 이용----------------------------------------------------
+
+/*
+//sum 함수의 정의
+int sum(int x, int y)
+{
+	return x + y;
+}
+int main()
+{
+	int num1, num2, ans;
+	cout << "첫 번째 정수를 입력하세요\n";
+	cin >> num1;
+	cout << "두 번째 정수를 입력하세요\n";
+	cin >> num2;
+
+	ans = sum(num1, num2);
+	cout << "두 정수의 합은" << ans << "입니다.\n";
+	return 0;
+}*/
+
+//최대값을 구하는 함수----------------------------------------------------------
+
+//max 함수의 정의
+/*
+int max(int x, int y)
+{
+	if (x > y)
+		return x;
+
+	else
+		return y;
+}
+int main()
+{
+	int num1, num2, ans;
+	cout << "첫 번째 정수를 입력하세요\n";
+	cin >> num1;
+	cout << ":두 번째 정수를 입력하세요\n";
+	cin >> num2;
+
+	ans = max(num1, num2);
+	cout << "두 정수중 큰 값은" << ans << "입니다.\n";
+	return 0;
+}*/
+// 인라인 함수의 원리 이해하기-------------------------------
+// 인라인 함수는 함수의 본체가 호출되는 곳에 복사되어 실행되는 함수이다. 따라서 함수를 호출할 때마다 함수의 본체가 복사되어 실행되므로 일반적인 함수보다 빠르게 실행된다.
+
+/*
+//max 함수의 정의
+inline int max(int x, int y) 
+{ 
+	if (x > y) 
+return x; 
+else return y; 
+}
+
+int main()
+{
+	int num1, num2, ans;
+
+	cout << "첫 번째 정수를 입력하십시오\n";
+	cin >> num1;
+	cout << "두 번째 정수를 입력하십시오\n";
+	cin >> num2;
+
+	ans = max(num1, num2);
+
+	cout << "최대값은" << ans << "입니다.\n";
+	return 0;
+}*/
+//LESSIN 7.6 함수 선언------------------------------------------------------------
+
+/*
+int max(int x, int y);
+//일단 함수 프로토타입 선언한다
+
+int main()
+{
+	int num1, num2, ans;
+
+	cout << "첫 번째 숫자\n";
+	cin >> num1;
+
+	cout << "두 번째 숫자\n";
+	cin >> num2;
+
+	ans = max(num1, num2);
+
+	cout << "최대값은" << ans << "입니다.\n";
+}
+//함수 정의를 뒤에 사용할 수 있음
+int max(int x, int y)
+{
+	if (x > y)
+		return x;
+	else
+		return y;
+}*/
+// 원래
+// 함수 프로토타입 선언- 함수 본체의 정의- 함수 이용 순이지만
+// 함수 프로토타입 선언-함수 이용- 함수 본체의 정의 순으로도 이용가능
+/*
+void buy(int x = 10);
+
+int main()
+{
+	cout << "처음 구매가는 100만원입니다.\n";
+	buy(100);
+	cout << "두 번째 구매가는 기본가입니다.\n";
+	buy();
+	return 0;
+}
+void buy(int x)
+{
+	cout << x << "만원 짜리 차량을 구매했습니다.\n";
+}*/
+
+// LESSON 7.7 함수 오버로드-------------------------------------------
+
+// 인수의 형과 개수가 다르면 같은 이름을 가진 함수를 여러 개 설정할 수 있다.
+/*
+//함수 선언
+int max(int x, int y);
+double max(double x, double y);
+
+int main() {
+	int a, b;
+	double da, db;
+
+	cout << "정수를 2개 입력하세요\n";
+	cin >> a >> b;
+
+	cout << "소수를 2개 입력하세요\n";
+	cin >> da >> db;
+
+	int ans1 = max(a, b);
+	double ans2 = max(da, db);
+
+	cout << "입력받은 정수의 최대 값은" << ans1 << "입니다.\n";
+	cout << "입력받은 소수의 최대 값은" << ans2 << "입니다.\n";
+	return 0;
+}
+
+//MAX (int형) 함수의 정의
+
+int max(int x, int y) {
+	if (x > y)
+		return x;
+	else
+		return y;
+}
+
+//MAX (double 형) 함수의 정의
+double max(double x, double y){
+	if (x > y)
+		return x;
+	else
+		return y;
+}*/
+
+//LESSON 7.8 함수 템플릿-----------------------------------------------------
+/*
+//함수 템플릿
+template <class T>
+T maxt(T x, T y)
+{
+	if (x > y)
+		return x;
+	else
+		return y;
+}
+
+int main()
+{
+	int a, b;
+	double da, db;
+	cout << "정수 2개를 입력하세요\n";
+	cin >> a >> b;
+	cout << "소수 2개를 입력하세요.\n";
+	cin >> da >> db;
+	
+	int ans1 = maxt(a, b);
+	double ans2 = maxt(da, db);
+	cout << "입력받은 정수의 최대 값은" << ans1 << "입니다.\n";
+	cout << "입력받은 소수의 최대 값은" << ans2 << "입니다.\n";
+	return 0;
+}*/
+
+//연습문제-------------------------------------------------------------
+
+//1.
+/*
+double square(double x) {
+	return x * x;
+}
+int square(int x){
+
+
+return x*x;
+}
+int main() {
+	int a, b;
+	double da, db;
+	cout << "정수를 입력하세요\n";
+	cin >> a;
+	cout << "소수를 입력하세요\n";
+		cin >> da;
+
+	b = square(a);
+	db = square(da);
+	cout << a << "의 제곱은" << b << "입니다.\n";
+	cout << da << "의 제곱은" << db << "입니다.\n";
+	return 0;
+}*/
+//3번 문제
+/*
+inline int square(int x) { return x * x; }
+inline double square(double x) { return x * x; }
+
+int main()
+{
+	int num1, ans1;
+	double num2, ans2;
+	cout << "정수를 입력하세여\n";
+	cin >> num1;
+	cout << "소수를 입력하세요\n";
+	cin >> num2;
+
+	ans1 =square(num1);
+	ans2 =square(num2);
+
+	cout << "정수의 제곱은" << ans1 << "입니다.\n";
+	cout << "소수의 제곱은" << ans2 << "입니다.\n";
+	return 0;
+}*/
+
+//4번 문제
+/*
+template <class T>
+T squart(T x)
+{
+	return x * x;
+}
+int main() {
+	int num1, ans1;
+	double num2, ans2;
+
+	cout << "정수를 입력하세요\n";
+	cin >> num1;
+
+	cout << "소수를 입력하세요\n";
+	cin >> num2;
+
+	ans1 = squart(num1);
+	ans2 = squart(num2);
+
+	cout << "정수의 제곱은" << ans1 << "입니다.\n";
+	cout << "소수의 제곱은" << ans2 << "입니다.\n";
+	return 0;
+}*/
+
+//LESSON 8 포인터=============================================(26.03.15)
+
+//LESSON 8.1 주소 연산자------------------------------------
+/*
+int main() {
+	int a;
+	a = 5;
+
+	cout << "변수 값은" << a << "입니다.\n";
+	cout << "변수 a의 주소 값은" << &a << "입니다.\n";
+	return 0;
+}*/
+
+//LESSON 8.2 포인터----------------------------------------------
+/*
+int main() {
+	int a;
+	int* pA; // 포인터 pA 선언
+
+	a = 5;
+	pA = &a; // 변수 a의 주소를 pA에 저장
+
+	cout << "번수 a의 값은" << a << "입니다.\n";
+	cout << "변수 a의 주소(&a)는" << &a << "입니다.\n";
+	cout << "포인터 Pa의 값은" << pA << "입니다.\n";
+
+	return 0;
+}*/
+//포인터를 통해 변수의 값 확인하기-------------
+/*
+int main()
+{
+	int a;
+	int* pA;
+
+	a = 5;
+	pA = &a; //변수 a의 주소를 pA에 저장합니다.
+
+	cout << "변수a의 값은" << a << "입니다.\n";
+	cout << "변수 a의 주소는" << &a << "입니다.\n";
+	cout << "포인터 pA의 값은" << pA << "입니다.\n";
+	cout << "*pA의 값은" << *pA << "입니다.\n"; //*를 사용하면 포인터가 가리키는 변수의 값을 알아낼 수 있다
+
+	return 0;
+}*/
+//포인터에 다른 주소 대입하기 ---------
+/*
+int main()
+{
+	int a = 5;
+	int b = 10;
+	int* pA;
+
+	pA = &a;
+
+	cout << "변수 a의 값은" << a << "입니다.\n";
+	cout << "포인터 pA의 값은" << pA << "입니다.\n";
+	cout << "pA의 값은" << *pA << "입니다.\n";
+
+	pA = &b;
+
+	cout << "변수 b의 값은" << b << "입니다.\n";
+	cout << "포인터 pA의 값이" << pA << "로 바뀌었습니다.\n";
+	cout << "pA의 값은" << *pA << "입니다.\n";
+
+	return 0;
+
+}*/
+
+//포인터로 변수의 값 바꾸기----------
+
+/*
+int main() {
+	int a;
+	int* pA;
+
+	a = 5;
+	pA = &a;
+
+	cout << "변수 a의 값은" << a << "입니다.\n";
+
+	*pA = 50;
+
+	cout << "pA에 50을 대입했습니다.\n";
+	cout << "변수 a의 값은" << a << "입니다.\n";
+
+	return 0;
+}*/
+//LESSON8.3 인수와 포인터------------------------------------------------------------
+
+//잘못된 swap 함수의 선언
+/*void swap(int x, int y);
+
+int main()
+{
+	int num1 = 5;
+	int num2 = 10;
+
+	cout << "변수 num1의 값은" << num1 << "입니다.\n";
+	cout << "변수 num2의 값은" << num2 << "입니다.\n";
+	cout << "두 변수를 교환합니다.\n";
+
+	swap(num1, num2);
+
+	cout << "변수 num1의 값은" << num1 << "입니다.\n";
+	cout << "변수 num2의 값은" << num2 << "입니다\n";
+	return 0;
+
+}
+void swap(int x, int y) {
+	int tmp;
+
+	tmp = x;
+	x = y;
+	y = tmp;
+}*/
+/*
+//올바른 선언
+void swap(int* px, int* py);
+
+int main()
+{
+	int num1 = 5;
+	int num2 = 10;
+
+	cout << "변수 num1의 값은" << num1 << "입니다.\n";
+	cout << "변수 num2의 값은" << num2 << "입니다.\n";
+	cout << "두 변수를 교환합니다.\n";
+
+	swap(&num1, &num2);
+
+	cout << "변수 num1의 값은" << num1 << "입니다.\n";
+	cout << "변수 num2의 값은" << num2 << "입니다\n";
+	return 0;
+
+}
+void swap(int* px, int* py) {
+	int tmp;
+
+	tmp = *px;
+	*px = *py;
+	*py = tmp;
+}*/
+
+//LESSON 8.4 인수와 레퍼런스 ----------------------------------------
+
+/*int main() {
+	int a = 5;
+	int& rA = a;
+
+	cout << "변수 a의 값은" << a << "입니다.\n";
+	cout << "레퍼런스 rA의 값은" << rA << "입니다.\n";
+
+	rA = 50;
+
+	cout << "rA에 50을 대입했습니다.\n";
+	cout << "레퍼런스 rA의 값이" << rA << "로 변경되었습니다..\n";
+	cout << "변수 a의 값은" << a << "입니다.\n";
+	cout << "변수 a의 주소
+	는" << &a << "입니다.\n";
+	cout << "레퍼런스 rA의 주소는" << &rA << "입니다.\n";
+
+}*/
+
+//레퍼런스를 이용한 swqp 문-----------------
+/*
+//swqp 함수 선언
+void swap(int& x, int& y);
+
+int main()
+{
+	int num1 = 5;
+	int num2 = 10;
+
+	cout << num1 << "와" << num2 << '\n';
+	cout << "교환합니다.\n";
+
+	swap(num1, num2);
+
+	cout << num1 << "와" << num2 << '\n';
+}
+
+void swap(int& x, int& y) {
+	int res;
+
+	res = x;
+	x = y;
+	y = res;
+}
+//실인수의 값을 바꾸고 싶지 않을 경우 앞에 const 를 붙이면 된다        ex)void fuck1(const int* Px)
+*/
+//8과 연습문제-------------------------------------------------------------------------------------
+
+//2.
+/*
+void add(int* x1, int *x2, int * a);
+int main() {
+	int num1, num2 ;
+	int ad;
+	cout << "2과목 분의 점수를 입력하십시오\n";
+	cin >> num1 >> num2;
+
+	cout << "더할 점수를 입력하십시오\n";
+	cin >> ad;
+
+	add(&num1, &num2,&ad);
+	
+	cout << "12점을 더했으므로\n" << "과목 1은" << num1 << "점이 되었습니다.\n"
+		<< "과목 2는" << num2 << "점이 되었습니다.\n";
+	return 0;
+}
+void add(int* x1, int *x2, int *a) {
+	*x1 += *a;
+	*x2 += *a;
+}*/
+
+//3.
+/*
+void add(int& x1, int& x2, int& a);
+int main() {
+	int num1, num2, ad;
+
+	cout << "2과목 분의 점수를 입력하세요\n";
+	cin >> num1 >> num2;
+
+	cout << "더할 점수를 입력하세요\n";
+	cin >> ad;
+
+	add(num1, num2, ad);
+
+	cout << ad << "점을 더했으므로\n" << "과목 1의 점수는" << num1 << "점이 되었습니다." << '\n' << "과목 2의 점수는" << num2 << "점이 되었습니다.\n";
+	return 0;
+
+}
+void add(int& x1, int& x2, int& a) {
+	x1 += a;
+	x2 += a;
+}*/
+
+//LESSON 9 배열======================================================
+//LESSON 9.3 배열의 이용======================================================
+/*
+int main()
+{
+	int test[5];// 아래 배열 +1
+
+	test[0] = 80;
+	test[1] = 60;
+	test[2] = 22;
+	test[3] = 50;
+	test[4] = 75;
+
+	for (int i = 0; i < 5; i++) {
+
+		cout << i + 1 << "번째 사람의 점수는" << test[i] << "입니다.\n";
+	}
+	return 0;
+}*/
+
+//9.4 코드 입력-------------------------------------------------------------------------
+/*
+int main() {
+	
+	const int num = 5; //인원수를 상수에 저장해서 사용
+	int test[num];
+	cout << num << "명의 점수를 입력하세요\n";
+	for (int i = 0; i < num; i++) {
+		cin >> test[i]; //키보드로 5명의 점수를 입력받음
+	}
+
+	for (int j = 0; j < num; j++) {
+		cout << j + 1 << "번째 사람의 점수는" << test[j] << "입니다.\n"; //입력받은 점수를 출력
+	}
+	return 0;
+}
+*/
+
+//배열 요소 정리하기=====================================================================
+/*
+int main() {
+
+	const int num = 5; 
+	int test[num];
+	cout << num << "명의 점수를 입력하세요\n";
+	for (int i = 0; i < num; i++) {
+		cin >> test[i]; 
+	}
+
+	//배열 정리하기
+	for (int s = 0; s < num - 1; s++) {
+		for (int t = s + 1; t < num; t++) {
+			if (test[t] > test[s]) {
+				int tmp = test[t];
+				test[t] = test[s];
+				test[s] = tmp;
+			}
+		}
+	}
+
+	for (int j = 0; j < num; j++) {
+		cout << j + 1 << "번째 사람의 점수는" << test[j] << "입니다.\n"; 
+	}
+	return 0;
+}*/
+
+//다차원 배열의 원리 이해하기=============================================================
+//배열 오소를 한번 더 배열 할 경우 다차원 배열이 만들어진다
+// 형명 배열명[요소 개수] [요소 개수];
+
+/*
+int main() {
+
+	const int sub = 2; //과목 수
+	const int num = 5; //인원 수
+
+	int test[sub][num];
+
+	test[0][0] = 80;
+	test[0][1] = 60;			
+	test[0][2] = 22;
+	test[0][3] = 50;
+	test[0][4] = 75;
+	test[1][0] = 90;
+	test[1][1] = 55;
+	test[1][2] = 68;
+	test[1][3] = 72;
+	test[1][4] = 58;
+
+	for (int i = 0; i < num; i++){
+		cout << i + 1 << "번째 사람의 국어 점수는" << test[0][i] << "입니다.\n";
+		cout << i + 1 << "번째 사람의 수학 점수는" << test[1][i] << "입니다.\n";
+		}
+
+	return 0;
+}*/
+
+//LESSON 9.5 배열과 포인터의 관계========================================================
+
+
+// ex) &test[0] == 배열의 첫 번째 요소의 주소를 나타냄
+//하지만 그냥 test를 사용해도 배열의 첫 번째 요소의 주소를 나타낼 수 있음 ex) test == &test[0]
+/*
+int main() {
+	int test[5] = { 80,60,55,22,75 };
+	cout << "test[0]의 값은" << test[0] << "입니다.\n";
+	cout << "test[0]의 주소는" << &test[0] << "입니다.\n";
+	cout << "test의 값은" << test << "입니다.\n";
+	cout << "test의 주소는" << *test << "입니다.\n";
+
+	return 0;
+}*/
+
+//포인터 연산하기=======================================================================
+/*
+int main() {
+	int test[5] = { 80,60,55,22,75 };
+
+	cout << "test[0]의 값은" << test[0] << "입니다.\n";
+	cout << "test[0]의 주소는" << &test[0] << "입니다.\n";
+	cout << "test의 값은" << test << "입니다.\n";
+	cout << "test+1의 값은" << test + 1 << "입니다.\n";
+	cout << " * (test + 1)의 값은" << *(test + 1) << "입니다.\n";
+
+	return 0;
+}*/
+//LESSON9.6 인수와 배열============================================================
+
+/*
+//avg 함수의 선언
+double avg(int t[]);
+
+int main() {
+	int test[5];
+
+	cout << "5명의 시험 점수를 입력하세요\n";
+
+	for (int i = 0; i < 5; i++) {
+		cin >> test[i];
+	}
+
+	double ans = avg(test); //배열명(배열 첫 번째 요소의 주소)을 실인수로 넘긴다
+	cout << "5명의 평균 점수는" << ans << "점입니다.\n";
+
+	return 0;
+}
+
+//avg함수의 정의
+
+double avg(int t[])
+{
+	double sum =0;
+	for (int i = 0; i < 5; i++) {
+		sum += t[i];
+	}
+	return sum / 5;
+}*/
+
+//포인터를 인수로 사용하기========================================================================
+
+/*
+//avg함수의 선언
+double avg(int* pt);
+
+int main()
+{
+	int test[5];
+	cout << "5명의 시험 점수를 입력하세요\n";
+	for (int i = 0; i < 5; i++)
+	{
+		cin >> test[i];
+	}
+
+	double ans = avg(test);
+	cout << "5명의 평균 점수는" << ans << "점입니다.\n";
+
+	return 0;
+}
+double avg(int* pt)
+{
+	double sum = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		sum += *(pt + i);
+	}
+	return sum/5;
+}*/
+
+//LESSON 9.7 문자열과 배열========================================================
+
+//문자열은 char 형 배열로 취급
+//문자열 배열의 마지막 요소는 \0
+//문자열 배열의 요소 수는 문자열의 길이+1 이상이 필요함
+
+//문자열 출력하기
+/*
+int main()
+{
+	char str[] = "Hello";
+	cout << str << '\n';
+
+	return 0;
+}*/
+
+//포인터로 문자열 출력하기
+/*
+int main()
+{
+	const char* str = "Hello";
+	
+	cout << str << '\n';
+
+	return 0;
+}*/
+
+//문자열 조작하기
+/*
+int main()
+{
+	char str[] = "Hello";
+
+	cout << "Hello\n";
+						  //\0을 만날 때까지 반복해서 실행한다.
+	for(int i=0; str[i]!='\0';i++)
+	{
+		cout << str[i] << '*';
+	}
+	cout << '\n';
+
+	return 0;
+}*/
+
+//문자열을 다루는 표준 라이브러리 함수
+/*
+#include <string> //문자열 조작 함수를 제공하는 표준 라이브러리를 사용할 수 있게 된다
+
+int main()
+{
+	char str[100];
+
+	cout << "문자열(영문자 및 숫자)을 입력하세요\n";
+
+	cin >> str;
+								// 문자열 조작 함수를 이용합니다.
+	cout << "문자열의 길이는" << strlen(str) << "입니다.\n";
+
+	return 0;
+}*/
+
+//문자열을 배열에 복사하기
+/*
+#include <string>
+
+
+int main()
+{
+	char str0[20];
+	char str1[10];
+	char str2[10];
+
+	strcpy(str1, "Hello");
+	strcpy(str2, "goodbye");
+	strcpy(str0, "str1");
+	strcpy(str0, "str2");
+
+	cout << "배열 str1은(는)" << str1 << "입니다.\n";
+	cout << "배열 str2은(는)" << str2 << "입니다.\n";
+	cout << "연결하면" << str0 << "입니다.\n";
+
+	return 0;
+
+}*/
+
+//연습==================================================================
+
+//1=======================================================================
+/*
+int max(int x[]);
+
+int main() {
+
+	int text[5];
+
+	cout << "시험 점수를 입력하세요\n";
+
+	for (int i = 0; i < 5; i++) {
+		cin >> text[i];
+	}
+
+	double ans = max(text);
+	
+	cout << "가장 높은 점수는" << ans << "점입니다.\n";
+	return 0;
+}
+
+int max(int x[]) {
+	int ans= x[0];
+	for (int t = 1; t < 5; t++) {
+		if (ans < x[t])
+			ans = x[t];
+	}
+	return ans;
+}*/
+
+//2.======================================================
+/*
+#include <string>
+
+int length(char* str);
+
+int main()
+{
+	char str[100];
+
+	cout << "문자열을 입력하세요\n";
+
+	cin >> str;
+
+	int l = length(str);
+
+	cout << "문자열의 길이는" << l << "입니다.\n";
+
+	return 0;
+}
+int length(char* str) {
+	int r = strlen(str);
+	//int i =0;
+	//while(str[i]){i++;}  <==로 해도 됨
+	return r;
+	}*/
+
+//3.===========================================
+/*
+int count(char str[], char ch);
+
+int main()
+{
+	char str[100];
+	char ch = 0;
+
+	cout << "문자열을 입력하세요\n";
+	cin >> str;
+
+	cout << "문자열에서 검색할 문자를 입력하세요\n";
+	cin >> ch;
+
+	int c = count(str, ch);
+
+	cout << str << "안에" << ch << "는" << c << "개 있습니다.\n";
+
+	return 0;
+}
+int count(char str[], char ch) {
+	int i = 0;
+	int c = 0;
+	while (str[i]) {
+		if (str[i] == ch)
+			c++;
+		i++;
+	}
+	return c;
+}*/
+
+//LESSON 10.1 변수와 스코프(26.03.21)=============================================================
+/*
+
+//func 함수의 선언
+void func();
+
+int a = 0;
+//전역 함수 a
+
+//main 함수
+int main() {
+
+	int b = 1;
+
+	cout << "miain함수에서는 변수 a와 b를 사용할 수 있습니다.\n";
+	cout << "변수 a의 값은" << a << "입니다.\n";
+	cout << "변수 b의 값은" << b << "입니다.\n";
+	//cout << "변수 c의 값은" << c << "입니다.\n";
+
+	func();
+	return 0;
+}
+
+//func 함수의 정의
+void func() {
+	int c = 2;
+	
+	cout << "func함수에서는 a와 c를 사용할 수 있습니다.\n";
+	cout << "변수 a의 값은" << a << "입니다.\n";
+	//cout << "변수 b의 값은" << b << "입니다.\n";
+	cout << "변수 c의 값은" << c << "입니다.\n";
+
+}*/
+
+//LESSON 10.2 기억 수명===================================================================
+
+/*
+//func 함수의 선언
+void func();
+
+int a = 0;
+//전역 변수 a
+
+//main 함수
+int main() {
+	for (int i = 0; i < 5; i++)
+		func();
+
+	return 0;
+}
+
+//fuck함수의 정의
+void func() {
+	int b = 0;
+	//지역 변수 b
+	static int c = 0;
+	//static을 붙인 지역 변수 c
+
+	cout << "변수 a는" << a << ", 변수 b는" << b << ", 변수 c는" << c << "입니다.\n";
+
+	a++;
+	b++;
+	c++;
+}*/
+
+//LESSON 10.3 메모리를 동적으로 확보하기====================================================
+
+//동적으로 메모리를 확보할 때는 new라는 연산자를 사용한다
+//포인터 = new 형명;
+//확보한 메모리를 헤제하려면 delete 포인터 명; 을 사용
+
+/*
+int main() {
+
+	int* pA;
+
+	pA = new int;
+	//메모리 확보
+	cout << "동적으로 메모리를 확보했습니다.\n";
+
+	*pA = 10;
+
+	cout << "동적으로 확보한 메모리를 사용하여" << *pA << "을(를) 출력했습니다.\n";
+
+	delete pA;
+	//메모리 해제
+
+	cout << "확보한메모리를 해제했습니다.\n";
+
+	return 0;
+}*/
+
+//배열을 동적으로 확보하기 2=========================================================
+
+// 동적으로 확보할 때는 == 포인터 명 = new 형명[요소 개수]
+// 동적으로 해제할 때는 == delete[] 포인터 명;
+/*
+int main() {
+	int num;
+	int* pT;
+
+	cout << "몇 명의 시험 점수를 입력하시겠습니까?\n";
+
+	cin >> num;
+	//키보드로 숫자를 입력받음
+	
+	pT = new int[num];
+	//입력받은 수만큼 배열 요소를 확보
+
+	cout << num << "명 분의 점수를 입력하십시오\n";
+
+	for (int i = 0; i < num; i++) {
+		cin >> pT[i];
+		//포인터를 사용하여 점수 저장
+	}
+
+	for (int j = 0; j < num; j++) {
+		cout << j + 1 << "번째 사람의 점수는" << pT[j] << "입니다.\n";
+	}
+	delete[] pT;
+
+	return 0;
+}*/
+
+//LESSON 10.4 파일 분할=============================================
+
+//LESSON 11.1 typedef ====================================================
+
+// typedef 형명 식별자; --> 형에 새로운 이름을 붙여 사용할 수 있음
+// ex) typedef unsigned long int Count;  
+// Count num =1;  == unsigned long int num =1; 과 같은 뜻으로 사용
+//이미 존재하는 형에 별명을 붙여서 사용
+
+//LESSON 11.2 열거==============================================================
+
+//열거형 선언 == enum 열거형명 { 식별자1, 식별자2, ...};
+
+	/*
+	enum Week {SUN, MON, TUE, WED, THU, FRI, SAT};
+	//열거형 선언
+
+	int main() {
+	Week w;
+	//Week형 변수 w를 선언
+
+	w = SUN;
+	// 값 sun 대입
+
+	switch (w) {
+	case SUN: cout << "일요일입니다.\n";
+		break;
+	case MON: cout << "월요일입니다.\n";
+		break;
+	case TUE: cout << "화요일입니다.\n";
+		break;
+	case WED: cout << "수요일입니다.\n";
+		break;
+	case THU: cout << "목요일입니다.\n";
+		break;
+	case FRI: cout << "금요일입니다.\n";
+		break;
+	case SAT: cout << "토요일입니다.\n";
+		break;
+	default: cout << "무슨 요일인지 알 수 없습니다.\n";
+		break;
+	}
+
+	return 0;
+}*/
+
+//LESSON 11.3 구조체==============================================
+
+//구조체형의 선언
+// struct 구조체형명{ 형명 식별자; 형명식별자; ... };
+
+/*
+//구조체형 Car의 선언
+struct Car{
+	int num;
+double gas;
+};
+
+int main() {
+
+	Car car1;
+	//구조체형 변수 선언
+
+	cout << "차량 번호를 입력하세요\n";
+	cin >> car1.num;
+
+	cout << "연료량을 입력하세요\n";
+	cin >> car1.gas;
+
+	cout << "차량 번호는" << car1.num << ":연료량은" << car1.gas << "입니다.\n";
+
+	return 0;
+}*/
+
+//구조체 멤버에 접근하기==================================
+/*
+struct Car {
+	int num;
+	double gas;
+};
+
+int main() {
+	Car car1 = { 1234, 25.5 };
+	Car car2 = { 4567, 52.2 };
+
+	cout << "car1의 차량 번호는" << car1.num << "이고 연료의 양은" << car1.gas << "입니다.\n";
+
+	cout << "car2의 차량 번호는" << car2.num << "이고 연료의 양은" << car2.gas << "입니다.\n";
+
+	car2 = car1;
+	cout << "car1을 car2에 대입했습니다.\n";
+	cout << "car2의 차량 번호는" << car2.num << "이고 연료의 양은" << car2.gas << "입니다.\n";
+
+	return 0;
+}*/
+
+//LESSON 11.4 구조체 응용하기=========================================================
+/*
+struct Car {
+	int num;
+	double gas;
+};
+
+void show(Car c);
+//구조체를 인수로 받는 함수
+
+int main() {
+	Car car1 = { 0, 0.0 };
+
+	cout << "차량 번호를 입력하세요\n";
+	cin >> car1.num;
+
+	cout << "연료량을 입력하세요\n";
+	cin >> car1.gas;
+
+	show(car1);
+	//구조체 car1의 값을 넘긴다
+
+	return 0;
+}
+
+void show(Car c) {
+	cout << "차량 번호는" << c.num << "이고 연료의 양은" << c.gas << "입니다.\n";
+}*/
+/*
+struct Car {
+	int num;
+	double gas;
+};
+
+void show(Car* c);
+//구조체를 인수로 받는 함수
+
+int main() {
+	Car car1 = { 0, 0.0 };
+
+	cout << "차량 번호를 입력하세요\n";
+	cin >> car1.num;
+
+	cout << "연료량을 입력하세요\n";
+	cin >> car1.gas;
+
+	show(&car1);
+	//구조체 car1의 값을 넘긴다
+
+	return 0;
+}
+
+void show(Car* c) {
+	cout << "차량 번호는" << c->num << "이고 연료의 양은" << c->gas << "입니다.\n";
+								// (->)는 화살표 연산자
+}*/
+/*
+struct Car {
+	int num;
+	double gas;
+};
+
+void show(Car& c);
+//구조체를 인수로 받는 함수
+
+int main() {
+	Car car1 = { 0, 0.0 };
+
+	cout << "차량 번호를 입력하세요\n";
+	cin >> car1.num;
+
+	cout << "연료량을 입력하세요\n";
+	cin >> car1.gas;
+
+	show(car1);
+	//구조체 car1의 값을 넘긴다
+
+	return 0;
+}
+
+void show(Car& c) {
+	cout << "차량 번호는" << c.num << "이고 연료의 양은" << c.gas << "입니다.\n";
+}*/
+
+//LESSON 11.5 공용체=================================================================
+
+/*
+//공용체형 Year의 선언
+union Year {
+	int ad;
+	int dangi;
+};
+
+int main()
+{
+	Year myyear;
+
+	cout << "서기를 입력하세요\n";
+	cin >> myyear.ad;
+
+	cout << "서기" << myyear.ad << "년입니다.\n";
+	cout << "단기 또한" << myyear.dangi << "년입니다.\n";
+
+	cout << "단기를 입력하세요\n";
+	cin >> myyear.dangi;
+
+	cout << "단기" << myyear.dangi << "년입니다.\n";
+	cout << "서기 또한" << myyear.ad << "년입니다.\n";
+
+	return 0;
+}*/
+//연습===================================================================
+//1.
+/**
+struct Person {
+	int age;
+	double weight;
+	double height;
+};
+int main() {
+	Person num1;
+	Person num2;
+
+	cout << "나이를 입력하세요\n";
+	cin >> num1.age;
+	cout << "몸무게를 입력하세요\n";
+	cin >> num1.weight;
+	cout << "키를 입력하세요\n";
+	cin >> num1.height;
+
+
+	cout << "나이를 입력하세요\n";
+	cin >> num2.age;
+	cout << "몸무게를 입력하세요\n";
+	cin >> num2.weight;
+	cout << "키를 입력하세요\n";
+	cin >> num2.height;
+
+	cout << "나이" << num1.age << "몸무게" << num1.weight << "키" << num1.height << "입니다.\n";
+
+	cout << "나이" << num2.age << "몸무게" << num2.weight << "키" << num2.height << "입니다.\n";
+	
+	return 0;
+}*/
+
+//2.============================================================================
+/*
+struct Person {
+	int age;
+	double weight;
+	double height;
+};
+
+void aging(Person* p);
+
+int main() {
+	Person num1;
+	
+
+	cout << "나이를 입력하세요\n";
+	cin >> num1.age;
+	cout << "몸무게를 입력하세요\n";
+	cin >> num1.weight;
+	cout << "키를 입력하세요\n";
+	cin >> num1.height;
+
+	cout << "나이" << num1.age << "몸무게" << num1.weight << "키" << num1.height << "입니다.\n";
+	
+	aging(&num1);
+	cout << "1년이 지났습니다.\n";
+	cout << "나이" << num1.age << "몸무게" << num1.weight << "키" << num1.height << "입니다.\n";
+	
+	return 0;
+}
+
+}*/
+
+
