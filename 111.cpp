@@ -2367,6 +2367,7 @@ int main() {
 
 //LESSON 12.2. 멤버에 대한 접근 제한============================================
 
+/*
 //Car class 선언
 class Car {
 private: //private 선언
@@ -2405,9 +2406,405 @@ int main() {
 	car1.setNumGas(1234, 20.5);
 	car1.show();
 
-	cout << "잘못된 연료랼(-10.0)을 저장해 보겠습니다.....\n";
+	cout << "잘못된 연료량(-10.0)을 저장해 보겠습니다.....\n";
 	car1.setNumGas(1234, -10.0);
 	car1.show();
 
 	return 0;
+}*/
+
+//LESSON12.3 인수의 객체=========================================================================
+
+/*
+//Car 클래스 선언
+class Car {
+private:
+	int num;
+	double gas;
+public:
+	int getNum() { return num; }
+	double getGas() { return gas; }
+	void show();
+	void setNumGas(int n, double g);
+};
+
+//Car 클래스 맴버 함수의 정의
+void Car::show()
+{
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
 }
+void Car::setNumGas(int n, double g)
+{
+	if (g > 0 && g < 1000) {
+		num = n;
+		gas = g;
+		cout << "차량 번호를" << num << "으로 연료량을" << gas << "로 바꾸었습니다.\n";
+	}
+	else {
+		cout << g << "는 올바른 연료량이 아닙니다.\n";
+		cout << "연료량을 바꿀 수 없습니다.\n";
+	}
+}
+
+//buy 함수 선언
+void buy(Car c);
+
+int main()
+{
+	Car car1;
+
+	car1.setNumGas(1234, 20.5);
+
+	buy(car1);
+
+	return 0;
+}
+
+void buy(Car c) {
+	int n = c.getNum();
+	double g = c.getGas();
+
+	cout << "차량 번호" << n << "연료량" << g << "인 자동차를 구입했습니다.\n";
+}*/
+
+//연습문제==========================================================================================
+
+//2.
+/*
+class Point {
+private:
+	int x;
+	int y;
+public:
+	void setX(int a);
+	void setY(int b);
+	int getX() { return x; }
+	int getY() { return y; }
+};
+
+void Point::setX(int a)
+{
+	if (a >= 0 && a <= 10) {
+		x = a;
+	}
+	else {
+		x = 0;
+	}
+}
+void Point::setY(int b)
+{
+	if (b >= 0 && b <= 100) {
+		y = b;
+	}
+	else {
+		y = 0;
+	}
+}
+
+int main() {
+	
+	Point p;
+	int x, y;
+
+	cout << "X 좌표를 입력하세요\n";
+	cin >> x;
+	cout << "Y좌표를 입력하세요\n";
+	cin >> y;
+
+	p.setX(x);
+	p.setY(y);
+
+	cout << "x 좌표는 (" << p.getX() << ")이고 Y 좌표는 (" << p.getY() << ") 입니다.\n";
+	return 0;
+
+}*/
+
+//LESSSON13 클래스의 기능=======================================================
+//생성자 정의하기
+
+/*
+//Car 클래스 선언
+class Car{
+private:
+	int num;
+	double gas;
+public:
+	Car();
+	void show();
+};
+
+//Car 클래스 멤버 함수의 정의
+Car::Car()
+{
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+
+void Car::show()
+{
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+int main()
+{
+	Car car1; //객체가 생성되면 생성자가 호출된다
+
+	car1.show();
+
+	return 0;
+}*/
+
+//LESSON 13.2 생성자 오버로드=======================================
+
+/*
+//Car 클래스 선언
+class Car {
+private:
+	int num;
+	double gas;
+public:
+	Car();
+	Car(int n, double g);
+	void show();
+};
+//Car 클래스 멤버 함수의 정의
+Car::Car() {
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+Car::Car(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호가" << num << "이며, 연료량이" << gas << "인 자동차가 만들어졌습니다.\n";
+}
+void Car::show() {
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은 " << gas << "입니다.\n";
+}
+
+int main() {
+	Car car1;
+	Car car2 (1234, 25.5);
+
+	return 0;
+
+}*/
+
+//LESSON 13.3 생성자의 응용 ===========================================================================
+/*
+//car 클래스 선언
+class Car {
+private:
+	int num;
+	double gas;
+public:
+	Car();
+	Car(int n, double g);
+	void show();
+};
+
+//Car 클래스 멤버 함수 정의
+Car::Car() {
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+Car::Car(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호가" << num << "이며 연료량이" << gas << "인 자동차가 만들어졌습니다.\n";
+}
+void Car::show() {
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+
+int main()
+{
+	Car mycars[3] = {
+		Car(),
+		Car(1234,25.5),
+		Car(4567,52.2)
+	};
+	return 0;
+}*/
+
+//LESSON 13.4 정적 멤버=======================================================================
+
+/*
+//Car 클래스 선언
+class Car {
+private:
+	int num;
+	double gas;
+public:
+	static int sum; //정적 데이터 멤버
+	Car();
+	void setCar(int n, double g);
+	void show();
+	static void showSum(); //정적 멤버 함수
+};
+Car::Car() {
+	num = 0;
+	gas = 0.0;
+	sum++;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+void Car:: setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호를" << num << "으로, 연료량을" << gas << "으로 바꾸었습니다.\n";
+}
+void Car::showSum() {
+	cout << "자동차는 모두" << sum << "대 있습니다.\n";
+}
+void Car::show() {
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+
+int Car::sum = 0; //정적 데이터 멤버를 초기화한다
+
+//Car클래스의 이용
+int main()
+{
+	Car::showSum(); 
+	//정적 데이터 함수를 호출
+
+	Car car1; 
+	//객체 생성
+	car1.setCar(1234, 20.5);
+
+	Car::showSum();
+	//정적 데이터 함수를 한번 더 호출
+
+	Car car2;
+	car2.setCar(4567, 30.5);
+
+	Car::showSum();
+
+	return 0;
+}*/
+
+//LESSON 14 새로운 클래스===============================================================================
+
+//LESSON 14.1 상속=======================================================================================
+/*
+//Car 클래스 선언
+class Car {
+private:
+	int num;
+	double gas;
+public:
+	Car();
+	void setCar(int n, double g);
+	void show();
+};
+
+//RacingCar 클래스 선언
+class RacingCar : public Car{ 	//파생 클래스 선언
+	private:
+		int cource; // 추가되는 데이터 함수
+	public:
+		RacingCar(); //파생 클래스의 생성자
+		void setCource(int c); //추가되는 멤버 함수
+};
+//Car클래스 멤버 함수의 정의
+Car::Car() {
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+void Car::setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호를" << num << "연료량을" << gas << "로 전환했습니다.\n";
+}
+void Car::show() {
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+
+//RacingCar 클래스 멤버 함수의 정의
+RacingCar::RacingCar()
+{
+	cource = 0;
+	cout << "레이싱 카가 만들어졌습니다.\n";
+}
+void RacingCar::setCource(int c) {
+	cource = c;
+	cout << "코스 번호를" << cource << "로 정했습니다.\n";
+}
+
+int main()
+{
+	RacingCar rccar1;
+	rccar1.setCar(1234, 20.5);
+	rccar1.setCource(5);
+
+	return 0;
+}*/
+
+//기본 클래스의 생성시 선택하기
+/*
+class Car {
+private:
+	int num;
+	double gas;
+public:
+	Car();
+	Car(int n, double g);
+	void setCar(int n, double g);
+	void show();
+};
+class RacingCar :public Car {
+private:
+	int course;
+public:
+	RacingCar();
+	RacingCar(int n, double g, int c);
+	void setCourse(int c);
+};
+
+Car::Car() {
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+
+Car::Car(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호가" << num << "이고 연료량이" << gas << "인 자동차가 만들어졌습니다.\n";
+}
+void Car::setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호가" << num << "이고 연료량을" << gas << "로 설정했습니다.\n";
+}
+void Car::show() {
+	cout << "차량 번호는" << num << "이고 연료량은 " << gas << "입니다.\n";
+}
+RacingCar::RacingCar() {
+	course = 0;
+	cout << "레이싱 카가 만들어졌습니다.\n";
+}
+RacingCar::RacingCar(int n, double g, int c) : Car(n,g)//기본 클래스에 존재하는 두 개의 인수를 받는 생성자 호출
+{
+	course = c;
+	cout << "코스 번호가" << course << "인 레이싱 카가 만들어졌습니다.\n";
+}
+void RacingCar::setCourse(int c){
+	course = c;
+	cout << "코스 번호를" << c << "로 바꾸었습니다.\n";
+}
+
+int main() {
+	RacingCar rccar1(1234, 25.5, 9);
+
+	return 0;
+}*/
+
