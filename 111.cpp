@@ -2808,3 +2808,527 @@ int main() {
 	return 0;
 }*/
 
+//04.01-------------------------------------------------------------------------------------------
+//LESSON 14.2 멤버에 대한 접근=========================================================
+
+/*
+//파생 클래스 안에서 기본 클래스 멤버에 접근하기
+
+class Car {
+protected: // Car 클래스의 데이터 멤버를 protected로 지정
+	int num;
+	double gas;
+public:
+	Car();
+	void setCar(int n, double g);
+	void show();
+};
+
+//RacingCar 클래스 선언
+class RacingCar : public Car {
+private:
+	int course;
+public:
+	RacingCar();
+	void setCourse(int c);
+	void newshow();
+};
+
+Car::Car() {
+	cout << "자동차가 만들어졌습니다.\n";
+}
+void Car::setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "번호가" << num << "이고 연료량이" << gas << "인 자동차 생성\n";
+}
+void Car::show() {
+	cout << "자동차의 번호는" << num << "입니다.\n";
+	cout << "자동차의 연료량은" << gas << "입니다.\n";
+}
+RacingCar::RacingCar() {
+	cout << "코스가" << course << "인 레이싱 카가 만들어졌습니다.\n";
+}
+void RacingCar::setCourse(int c) {
+	course = c;
+	cout << "코스를" << course << "로 설정했습니다.\n";
+}
+
+//RacingCar 클래스 멤버 함수의 정의
+
+void RacingCar::newshow() {
+	cout << "레이싱 카의 차량 번호는" << num << "입니다.\n";
+}
+
+int main() {
+	RacingCar rccar1;
+	
+	rccar1.setCourse(1);
+	
+	return 0;
+}*/
+
+//LESSON 14.3 가상 함수===================================================================
+//멤버 함수 오버라이드하기
+
+/*
+class Car {
+protected:
+	int num;
+	double gas;
+public:
+	Car();
+	void setCar(int n, double g);
+	void show();
+};
+
+class RacingCar :public Car {
+private:
+	int course;
+public:
+	RacingCar();
+	void setCourse(int c);
+	void show();
+
+};
+
+Car::Car()
+{
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+void Car::setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호를" << num << "으로 연료량을" << gas << "로 바꾸었습니다.\n";
+}
+void Car::show()
+{
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+
+RacingCar::RacingCar() {
+	course = 0;
+	cout << "레이싱 카가 만들었습니다.\n";
+}
+void::RacingCar::setCourse(int c) {
+	course = c;
+	cout << "코스가" << c << "로 정해졌습니다.\n";
+}
+void RacingCar::show() {
+	cout << "레이싱 카의 차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+	cout << "코스 번호는" << course << "입니다.\n";
+}
+
+int main()
+{
+	RacingCar rccar1;
+	rccar1.setCar(1234, 20.5);
+	rccar1.setCourse(5);
+
+	rccar1.show();
+
+	return 0;
+}*/
+
+
+//기본 클래스형 포인터 이용하기=================================================================
+
+/*
+class Car {
+protected:
+	int num;
+	double gas;
+public:
+	Car();
+	void setCar(int n, double g);
+	void show();
+};
+
+class RacingCar :public Car {
+private:
+	int course;
+public:
+	RacingCar();
+	void setCourse(int c);
+	void show();
+};
+
+Car::Car()
+{
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+void Car::setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호를" << num << "으로 연료량을" << gas << "로 바꾸었습니다.\n";
+}
+void Car::show()
+{
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+
+RacingCar::RacingCar() {
+	course = 0;
+	cout << "레이싱 카가 만들었습니다.\n";
+}
+void::RacingCar::setCourse(int c) {
+	course = c;
+	cout << "코스가" << c << "로 정해졌습니다.\n";
+}
+void RacingCar::show() {
+	cout << "레이싱 카의 차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+	cout << "코스 번호는" << course << "입니다.\n";
+}
+
+int main()
+{
+	Car* pCars[2]; // 기본 클래스형 포인터
+
+	Car car1;			//기본 클래스 객체 생성
+	RacingCar rccar1;	//파생 클래스 객체 생성
+
+	pCars[0] = &car1;
+	pCars[0]->setCar( 1234,20.5 );
+
+	pCars[1] = &rccar1;
+	pCars[1]->setCar(4567, 50.5);
+
+	for (int i = 0; i < 2; i++) {
+		pCars[i]->show();
+	}
+
+	return 0;
+}*/
+
+//가상 함수 사용하기----------------------------------------------------------------------
+
+//가상 함수 virtual을 사용하면 show() 함수를 호출할 때 기본클래스의 show()와 파생 클래스의 show() 함수가 둘다 호출된다
+/*
+class Car {
+protected:
+	int num;
+	double gas;
+public:
+	Car();
+	void setCar(int n, double g);
+	virtual void show();		//가상 함수로 만들기
+};
+
+class RacingCar :public Car {
+private:
+	int course;
+public:
+	RacingCar();
+	void setCourse(int c);
+	void show();
+};
+
+Car::Car()
+{
+	num = 0;
+	gas = 0.0;
+	cout << "자동차가 만들어졌습니다.\n";
+}
+void Car::setCar(int n, double g) {
+	num = n;
+	gas = g;
+	cout << "차량 번호를" << num << "으로 연료량을" << gas << "로 바꾸었습니다.\n";
+}
+void Car::show()
+{
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+}
+
+RacingCar::RacingCar() {
+	course = 0;
+	cout << "레이싱 카가 만들었습니다.\n";
+}
+void::RacingCar::setCourse(int c) {
+	course = c;
+	cout << "코스가" << c << "로 정해졌습니다.\n";
+}
+void RacingCar::show() {
+	cout << "레이싱 카의 차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+	cout << "코스 번호는" << course << "입니다.\n";
+}
+
+int main()
+{
+	Car* pCars[2]; // 기본 클래스형 포인터
+
+	Car car1;			//기본 클래스 객체 생성
+	RacingCar rccar1;	//파생 클래스 객체 생성
+
+	pCars[0] = &car1;
+	pCars[0]->setCar(1234, 20.5);
+
+	pCars[1] = &rccar1;
+	pCars[1]->setCar(4567, 50.5);
+
+	for (int i = 0; i < 2; i++) {
+		pCars[i]->show();
+	}
+
+	return 0;
+}*/
+
+//LESSON 14.4. 추상 클래스=======================================================================
+
+/*
+class Venhicle {
+protected:
+	int speed;
+public:
+	void setSpeed(int s);
+	virtual void show() = 0;	//순수 가상함수 show()
+};
+
+class Car : public Venhicle {
+private:
+	int num;
+	double gas;
+public:
+	Car(int n, double g);
+	void show();
+};
+
+class Plane :public Venhicle {
+private:
+	int flight;
+public:
+	Plane(int f);
+	void show();
+};
+
+void Venhicle::setSpeed(int s) {
+	speed = s;
+	cout << "속도를" << speed << "로 변경했습니다.\n";
+}
+
+Car::Car(int n, double g)
+{
+	num = n;
+	gas = g;
+	cout << "차량 번호가" << num << "이고, 연료량이" << gas << "인 자동차가 만들어졌습니다.\n";
+}
+void Car::show()
+{
+	cout << "차량 번호는" << num << "입니다.\n";
+	cout << "연료량은" << gas << "입니다.\n";
+	cout << "속도는" << speed << "입니다.\n";
+}
+
+Plane::Plane(int f)
+{
+	flight = f;
+	cout << "비행기 번호가" << flight << "인 비행기를 만들었습니다.\n";
+}
+void Plane::show()
+{
+	cout << "비행기 번호는" << flight << "입니다.\n";
+	cout << "속도는" << speed << "입니다.\n";
+}
+
+int main()
+{
+	Venhicle* pVc[2]; //추상 클래스형 배열
+
+	Car car1(1234, 20.5);
+	pVc[0] = &car1;
+	pVc[0]->setSpeed(60);
+
+	Plane pln1(232);
+	pVc[1] = &pln1;
+	pVc[1]->setSpeed(500);
+
+	for (int i = 0; i < 2; i++) {
+		pVc[i]->show();
+	}
+}*/
+
+//LESSON 14.5 클래스 계층=====================================================================================
+
+//다중상속
+// class 파생 클래스 : 접근지정자 기본 클래스 1,접근지정자 기본 클래스 2 {}....
+
+/*
+//Base 클래스 선언1
+class Base1 {
+protected:
+	int bs1;
+public:
+	Base1(int b1 = 0) { bs1 = b1; }
+	void showBs1();
+};
+//Base 클래스 선언 2
+class Base2 {
+protected:
+	int bs2;
+public:
+	Base2(int b2 = 0) { bs2 = b2; }
+	void showBs2();
+};
+
+//Derived 클래스의 선언
+class Derived : public Base1, public Base2 //클래스 두개를 상속받은
+{
+protected:
+	int dr;
+public:
+	Derived(int d = 0) { dr = d; }
+	void showDr();
+};
+
+//Base1 클래스 멤버 함수의 정의
+void Base1::showBs1() {
+	cout << "bs1은" << bs1 << "입니다.\n";
+}
+//Base2 클래스 멤버 함수의 정의
+void Base2::showBs2() {
+	cout << "bs2은" << bs2 << "입니다.\n";
+}
+
+//Derived 클래스 멤버 함수의 정의
+void Derived::showDr()
+{
+	cout << "dr은" << dr << "입니다.\n";
+}
+
+int main()
+{
+	Derived drv;
+	drv.showBs1();
+	drv.showBs2();
+	drv.showDr();
+	
+	return 0;
+}*/
+
+//다중상속을 통해 중복해서 상속받은 멤버 이용하기-------------------------------------
+/*
+class Base1 {
+protected:
+	int bs1;
+public:
+	Base1(int b1 = 0) { bs1 = b1; }
+	void showBs(); //같은이름
+};
+//Base 클래스 선언 2
+class Base2 {
+protected:
+	int bs2;
+public:
+	Base2(int b2 = 0) { bs2 = b2; }
+	void showBs(); //같은 이름
+};
+
+//Derived 클래스의 선언
+class Derived : public Base1, public Base2 //클래스 두개를 상속받은
+{
+protected:
+	int dr;
+public:
+	Derived(int d = 0) { dr = d; }
+	void showDr();
+};
+
+//Base1 클래스 멤버 함수의 정의
+void Base1::showBs() {
+	cout << "bs1은" << bs1 << "입니다.\n";
+}
+//Base2 클래스 멤버 함수의 정의
+void Base2::showBs() {
+	cout << "bs2은" << bs2 << "입니다.\n";
+}
+
+//Derived 클래스 멤버 함수의 정의
+void Derived::showDr()
+{
+	cout << "dr은" << dr << "입니다.\n";
+}
+
+int main()
+{
+	Derived drv;
+	drv.Base1::showBs();	//Base1에서 물려받은 멤버 호출
+	drv.Base2::showBs();	//Base2에서 물려받은 멤버 호출
+	drv.showDr();
+
+	return 0;
+}*/
+
+//가상 기본 클래스의 원리---------------------------------------------------------------
+
+//Base0 클래스 선언
+class Base0 {
+protected:
+	int bs0;
+public:
+	Base0(int b0 = 0) { bs0 = b0; }
+	void showBs0();
+};
+
+//Base1 클래스 선언
+class Base1 :public virtual Base0 //Base0을 가상 기본 클래스로 상속받음
+{
+protected:
+	int bs1;
+public:
+	Base1(int b1=0) { bs1 = b1; }
+	void showBs1();
+};
+
+//Base2 클래스 선언
+class Base2 :public virtual Base0 //Base0을 가상 기본 클래스로 상속받음
+{
+protected:
+	int bs2;
+public:
+	Base2(int b2=0) { bs2 = b2; }
+	void showBs2();
+};
+
+//Derived 클래스 선언
+class Derived : public Base1, public Base2 {
+protected:
+	int dr;
+public:
+	Derived(int d = 0) { dr = d; }
+	void showDr();
+};
+
+//Base0 클래스 멤버 함수의 정의
+void Base0::showBs0() {
+	cout << "bs0은" << bs0 << "입니다.\n";
+}
+//Base1 클래스 멤버 함수의 정의
+void Base1::showBs1() {
+	cout << "bs1은" << bs1 << "입니다.\n";
+}
+//Base2 클래스 멤버 함수의 정의
+void Base2::showBs2() {
+	cout << "bs2은" << bs2 << "입니다.\n";
+}
+//Derived 함수의 정의
+void Derived::showDr() {
+	cout << "dr은" << dr << "입니다.\n";
+}
+
+int main()
+{
+	Derived drv;
+
+	drv.showBs0(); //가상 기본 클래스로부터 상속받은 멤버 호출
+
+	return 0;
+}
